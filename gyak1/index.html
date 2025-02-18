@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Halálos iramban - Bemutató</title>
+    <style>
+        /* basic */
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #1c1c1c;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* allign center */
+        .container {
+            max-width: 800px;
+            width: 90%;
+            margin: 20px auto;
+            background: #222;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+        }
+
+        /* headlines */
+        h1, h2 {
+            text-align: center;
+            color: #f8c20e;
+        }
+
+        /* table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            background: #333;
+            color: white;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        table, th, td {
+            border: 1px solid #444;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background: #f8c20e;
+            color: black;
+        }
+
+        /* elements of list */
+        ul, ol {
+            background: #333;
+            padding: 35px;
+            border-radius: 5px;
+        }
+
+        li {
+            margin: 5px 0;
+        }
+
+        /* images */
+        .image-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+        }
+
+        /* links */
+        a {
+            color: #f8c20e;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* actors section */
+        .actors {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            gap: 15px;
+            background: #333;
+            padding: 15px;
+            border-radius: 5px;
+        }
+
+        .actor {
+            text-align: center;
+            width: 150px;
+        }
+
+        .actor img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+        }
+
+        .actor p {
+            margin-top: 5px;
+            font-size: 14px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Halálos iramban</h1>
+        <p>A Halálos iramban (eredeti cím: The Fast and the Furious) egy 2001-ben bemutatott amerikai akciófilm, amelyet Rob Cohen rendezett. A film az autós üldözések és az utcai versenyek világába kalauzolja el a nézőket.</p>
+
+        <h2>Főbb Szereplők</h2>
+        <div class="actors">
+            <div class="actor">
+                <img src="images/vin_diesel.jpg" alt="Vin Diesel">
+                <p>Vin Diesel - Dominic Toretto</p>
+            </div>
+            <div class="actor">
+                <img src="images/paul_walker.jpg" alt="Paul Walker">
+                <p>Paul Walker - Brian O'Conner</p>
+            </div>
+            <div class="actor">
+                <img src="images/michelle_rodriguez.jpg" alt="Michelle Rodriguez">
+                <p>Michelle Rodriguez - Letty Ortiz</p>
+            </div>
+            <div class="actor">
+                <img src="images/jordana_brewster.jpg" alt="Jordana Brewster">
+                <p>Jordana Brewster - Mia Toretto</p>
+            </div>
+        </div>
+
+        <h2>Film Rövid Története</h2>
+        <p>A film Brian O'Conner történetét követi, aki beépített rendőrként próbál beférkőzni az illegális utcai versenyek világába. Dominic Toretto, egy karizmatikus versenyző és csapatának vezetője, hamarosan O'Conner figyelmének középpontjába kerül. Ahogy a nyomozás halad, Brian egyre jobban belesodródik ebbe a veszélyes világba.</p>
+
+        <h2>Érdekességek</h2>
+        <ol>
+            <li>A film alapját egy 1998-as cikk adta, amely az illegális utcai versenyzés világáról szólt.</li>
+            <li>Vin Diesel kaszkadőrjei között maga is elvállalt néhány veszélyes jelenetet.</li>
+            <li>Paul Walker való életben is szenvedélyesen szerette az autókat és a versenyzést.</li>
+            <li>A film forgatása során több mint 150 autót használtak fel, amelyek közül sokat megsemmisítettek.</li>
+            <li>A film sikerének köszönhetően a "Halálos iramban" franchise az egyik legsikeresebb akciófilm-sorozattá vált.</li>
+            <li>Az első film forgatása során Vin Diesel és Paul Walker között szoros barátság alakult ki, amely a valós életben is folytatódott.</li>
+            <li>A filmben látható autós üldözések és kaszkadőr jelenetek nagy része valódi, minimális számítógépes trükkökkel.</li>
+            <li>A film zenéje is nagy sikert aratott, és több slágerlistás dalt tartalmazott.</li>
+            <li>A "Halálos iramban" filmekben szereplő autók közül sokat a rajongók is megvásárolhattak különböző aukciókon.</li>
+            <li>A filmben szereplő autók közül a legikonikusabb a 1970-es Dodge Charger, amely Dominic Toretto kedvenc autója.</li>
+        </ol>
+
+        <h2>Film Sorozat</h2>
+        <table>
+            <tr>
+                <th>Cím</th>
+                <th>Megjelenési év</th>
+            </tr>
+            <tr>
+                <td>Halálos iramban</td>
+                <td>2001</td>
+            </tr>
+            <tr>
+                <td>Halálosabb iramban</td>
+                <td>2003</td>
+            </tr>
+            <tr>
+                <td>Halálos iram: Tokiói hajsza</td>
+                <td>2006</td>
+            </tr>
+            <tr>
+                <td>Halálos iramban 4.</td>
+                <td>2009</td>
+            </tr>
+            <tr>
+                <td>Halálos iramban: Ötödik sebesség</td>
+                <td>2011</td>
+            </tr>
+            <tr>
+                <td>Halálos iramban 6.</td>
+                <td>2013</td>
+            </tr>
+            <tr>
+                <td>Halálos iramban 7.</td>
+                <td>2015</td>
+            </tr>
+            <tr>
+                <td>Halálos iramban 8.</td>
+                <td>2017</td>
+            </tr>
+            <tr>
+                <td>Halálos iramban: Hobbs és Shaw</td>
+                <td>2019</td>
+            </tr>
+            <tr>
+                <td>Halálos iramban 9.</td>
+                <td>2021</td>
+            </tr>
+            <tr>
+                <td>Halálos iramban 10.</td>
+                <td>2023</td>
+            </tr>
+        </table>
+        </table>
+
+        <h2>További információk</h2>
+        <p>További részletekért látogass el a <a href="https://hu.wikipedia.org/wiki/Hal%C3%A1los_iramban" target="_blank">Wikipédia oldalára</a>.</p>
+
+        <h2>Elérhető Streaming Szolgáltatók</h2>
+        <ul>
+            <li><a href="https://www.netflix.com" target="_blank">Netflix</a></li>
+            <li><a href="https://www.disneyplus.com" target="_blank">Disney+</a></li>
+            <li><a href="https://www.hbomax.com" target="_blank">HBO Max</a></li>
+            <li><a href="https://www.amazon.com/Prime-Video" target="_blank">Amazon Prime Video</a></li>
+        </ul>
+    </div>
+
+</body>
+</html>
