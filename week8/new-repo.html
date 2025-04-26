@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Git App - Új repo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div>
+        <div>
+            <label for="name">Név:</label>
+            <input type="text" id="name">
+        </div>
+
+        <div>
+            <label for="description">Leírás:</label>
+            <input type="text" id="description">
+        </div>
+
+        <div>
+            <p>Láthatóság:</p>
+            <input type="radio" name="visibility" id="private">
+            <label for="private">Privát</label>
+
+            <input type="radio" name="visibility" id="public">
+            <label for="public">Publikus</label>
+        </div>
+
+        <div>
+            <p>Extrák:</p>
+            <input type="checkbox" id="has-wiki">
+            <label for="has-wiki">Wiki oldal</label>
+        </div>
+
+        <div>
+            <label for="license">Licenc:</label>
+            <select id="license">
+                <option value="MIT">MIT</option>
+                <option value="GPL-3.0">GNU General Public License v3.0</option>
+                <option value="Unlicense">The Unlicense</option>
+            </select>
+        </div>
+
+        <button class="btn btn-primary" id="create-btn">Mentés</button>
+    </div>
+    <script src="app.js"></script>
+    <script>
+        async function createRepo(repo) {
+            try {
+                const res = await fetch('https://api.github.com/user/repos', {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': 'Bearer ' + GITHUB_ACCESS_TOKEN
+                    },
+                    body: JSON.stringify(repo)
+                });
+
+                if (!res.ok) {
+                    const error = await res.json();
+                    alert(error.message);
+                    return;
+                }
+
+                const repoCreated = await res.json();
+                const repoName = repoCreated.full_name;
+
+                window.location = 'repo.html?name=' + repoName;
+            } catch (err) {
+                alert('Unexpected server error.');
+                console.error(err);
+            }
+        }
+
+        const createBtn = document.querySelector('#create-btn');
+        createBtn.addEventListener('click', () => {
+            const nameElem = document.querySelector('#name');
+            const name = nameElem.value;
+
+            const descElem = document.querySelector('#description');
+            const description = descElem.value;
+
+            const visibilityElem = document.querySelector('input[name="visibility"]:checked');
+            const private = visibilityElem && visibilityElem.id == 'private';
+
+            const hasWikiElem = document.querySelector('#has-wiki');
+            const hasWiki = hasWikiElem.checked;
+
+            const licenseElem = document.querySelector('#license');
+            const license = licenseElem.value;
+
+            const repo = {
+                name: name,
+                description: description,
+                private: private,
+                has_wiki: hasWiki,
+                license_template: license
+            };
+
+            createRepo(repo);
+        });
+    </script>
+</body>
+</html>

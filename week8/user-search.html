@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User keresése</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h4>User keresése</h4>
+    <label for="user-name">User neve:</label>
+    <input type="text" id="user-name">
+    <button id="search-btn" class="btn btn-primary">Keresés</button>
+
+    <div id="results"></div>
+
+    <script src="app.js"></script>
+    <script>
+        function searchUser(searchText) {
+            const username = searchText.trim();
+            if (!username) {
+                alert('Enter a username to search for!');
+                return;
+            }
+            window.location.href = 'user.html?id=' + encodeURIComponent(username);
+        };
+
+        const searchBtn = document.getElementById('search-btn');
+        searchBtn.addEventListener('click', () => {
+            const searchText = document.getElementById('user-name').value;
+            searchUser(searchText);
+        });
+    </script>
+</body>
+</html>

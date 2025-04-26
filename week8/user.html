@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User adatlap</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="app.js"></script>
+</head>
+<body>
+    <body>
+        <div class="background-container">
+            <div class="profile-card">
+                <img id="avatar" src="" alt="User Avatar" class="avatar">
+                <h1 id="username"></h1>
+                <p id="bio" class="info"></p>
+                <div class="info-container">
+                    <p id="location"></p>
+                    <p id="blog"></p>
+                    <p id="email"></p>
+                </div>
+                <div class="stats">
+                    <div id="followers"></div>
+                    <div id="following"></div>
+                    <div id="public_repos"></div>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script>
+        async function fetchUserData(username) {
+            try {
+                const res = await fetch('https://api.github.com/users/' + encodeURIComponent(username), {
+                    headers: {
+                        'Authorization': 'Bearer ' + GITHUB_ACCESS_TOKEN
+                    }
+                });
+
+                if (!res.ok) {
+                    throw new Error('User not found');
+                }
+
+                const data = await res.json();
+                console.log(data);
+                document.getElementById('username').textContent = data.login;
+                document.getElementById('avatar').src = data.avatar_url;
+                document.getElementById('bio').textContent = data.bio || 'No bio available';
+                document.getElementById('location').textContent = data.location || 'No location available';
+                document.getElementById('blog').innerHTML = data.blog ? `<a href="${data.blog}">${data.blog}</a>` : 'No blog available';
+                document.getElementById('email').textContent = data.email || 'No email available';
+                document.getElementById('followers').textContent = `Followers: ${data.followers}`;
+                document.getElementById('following').textContent = `Following: ${data.following}`;
+                document.getElementById('public_repos').textContent = `Public Repos: ${data.public_repos}`;
+            } catch (error) {
+                console.error(error);
+            }
+        }
+        
+        function getQueryParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
+        const username = getQueryParam('id');
+        if (username) {
+            fetchUserData(username);
+        } else {
+            document.body.innerHTML = '<p>No user specified</p>';
+        }
+    </script>
+</body>
+</html>
