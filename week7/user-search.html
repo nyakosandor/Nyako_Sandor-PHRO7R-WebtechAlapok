@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User keresése</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h4>User keresése</h4>
+    <label for="user-name">User neve:</label>
+    <input type="text" id="user-name">
+    <button id="search-btn" class="btn btn-primary">Keresés</button>
+
+    <div id="results"></div>
+
+    <script src="app.js"></script>
+    <script>
+        function searchUser(searchText) {
+            fetch('https://api.github.com/users/' + encodeURIComponent(searchText), {
+                headers: {
+                    'Authorization': 'Bearer ' + GITHUB_ACCESS_TOKEN
+            }
+            })
+            .then(res => res.json())
+            .then(data => {
+                const resultDiv = document.querySelector('#results');
+                resultDiv.innerHTML = '';
+
+                if (data.message === 'Not Found') {
+                    resultDiv.innerHTML = '<p>User not found</p>';
+                    return;
+                }
+
+                const userHtml = `
+                    <div class="card">
+                        <h4>${data.login}</h4>
+                        <img src="${data.avatar_url}" alt="${data.login}" width="100" height="100">
+                        <p><strong>Followers:</strong> ${data.followers}</p>
+                        <p><strong>Following:</strong> ${data.following}</p>
+                        <p><strong>Public Repos:</strong> ${data.public_repos}</p>
+                    </div>
+                `;
+                resultDiv.innerHTML += userHtml;
+            })
+            .catch(error =>{
+                console.error("Error fetching user data:", error);
+            });
+        }
+        
+        const searchBtn = document.querySelector('#search-btn');
+        searchBtn.addEventListener('click', () => {
+            const searchText = document.querySelector('#user-name').value;
+            searchUser(searchText);
+        });
+    </script>
+</body>
+</html>
